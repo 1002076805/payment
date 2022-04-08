@@ -1,0 +1,15 @@
+body {
+	background-image: url("1.jpeg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.div .top{
+	position: relative;
+	top:200px;
+	left: 100px;
+}
+.div .leftPostion{
+    float: left;
+	margin: 50px;
+}
