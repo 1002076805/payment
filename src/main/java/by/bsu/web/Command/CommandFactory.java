@@ -7,12 +7,28 @@ public class CommandFactory {
                 return new LoginCommand();
             case "Logout":
                 return new LoginCommand();
-            case "bookList":
-                return new PostListCommand();
-            case "addBook":
-                return new AddPostCommand();
-            case "addBookMain":
-                return new AddPostMainCommand();
+            case "cardList":
+                return new CradListCommand();
+            case "addCards":
+                return new AddCards();
+            case "addCardMain":
+                return new AddCardMainCommand();
+            case "register":
+                return new Register();
+            case "registerMain":
+                return new RegisterMain();
+            case "deleteRecord":
+                return new DeleteRecord();
+            case "updateCards":
+                return new UpdateCards();
+            case "updateCardMain":
+                return new UpdateCardsMain();
+            case "balanceList":
+                return new BalanceListCommand();
+            case "userList":
+                return new UserListCommand();
+            case "logout":
+                return new LogoutCommand();
             default:
                 throw new UnsupportedOperationException();
 

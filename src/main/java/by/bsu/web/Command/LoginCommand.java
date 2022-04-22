@@ -10,11 +10,11 @@ import java.sql.SQLException;
 public  class LoginCommand implements  Command{
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException {
-        String login = req.getParameter("login");
+        String account = req.getParameter("login");
         String password = req.getParameter("password");
 
         UserDao dao = new UserDao();
-        User user = dao.login(login,password);
+        User user = dao.login(account,password);
 
         if(user!= null){
             req.getSession().setAttribute("user",user);
