@@ -1,5 +1,6 @@
-package by.bsu.web.Command;
+package by.bsu.web.Command.Card;
 
+import by.bsu.web.util.Command;
 import by.bsu.web.dao.CardDao;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 
-public class DeleteRecord implements Command{
+public class DeleteRecord implements Command {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp)

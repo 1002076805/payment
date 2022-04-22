@@ -1,4 +1,4 @@
-package by.bsu.web.Command;
+package by.bsu.web.util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

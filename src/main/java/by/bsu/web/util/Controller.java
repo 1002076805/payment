@@ -1,8 +1,4 @@
-package by.bsu.web;
-
-import by.bsu.web.Command.Command;
-import by.bsu.web.Command.CommandFactory;
-import by.bsu.web.Command.LoginCommand;
+package by.bsu.web.util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

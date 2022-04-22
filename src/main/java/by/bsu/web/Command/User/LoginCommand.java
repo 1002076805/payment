@@ -1,5 +1,6 @@
-package by.bsu.web.Command;
+package by.bsu.web.Command.User;
 
+import by.bsu.web.util.Command;
 import by.bsu.web.dao.UserDao;
 import by.bsu.web.entity.User;
 
@@ -7,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
-public  class LoginCommand implements  Command{
+public  class LoginCommand implements Command {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException {
         String account = req.getParameter("login");

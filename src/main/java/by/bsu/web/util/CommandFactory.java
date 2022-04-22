@@ -1,4 +1,8 @@
-package by.bsu.web.Command;
+package by.bsu.web.util;
+
+import by.bsu.web.Command.Balance.BalanceListCommand;
+import by.bsu.web.Command.Card.*;
+import by.bsu.web.Command.User.*;
 
 public class CommandFactory {
     public Command create(String command){
