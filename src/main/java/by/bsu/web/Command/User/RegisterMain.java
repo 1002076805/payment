@@ -21,8 +21,9 @@ public class RegisterMain implements Command {
         String gender=req.getParameter("gender");
         String tel=req.getParameter("tel");
         String address=req.getParameter("address");
-        User user = new User(null,isadmin,account,name,password,idNumber,gender,tel,address);
+        User user = new User(null,account,name,password,idNumber,gender,tel,address,isadmin);
         dao.register(user);
+        req.setAttribute("RegisterMessage", "Register Success!");
         return "index.jsp";
     }
 }

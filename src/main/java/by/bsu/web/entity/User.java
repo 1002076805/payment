@@ -4,25 +4,25 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private Integer id;
-    private Integer isadmin;
-    private String account;
     private String  name;
+    private String account;
     private String  password;
     private String  idNumber;
     private String  gender;
     private String  tel;
     private String  address;
+    private Integer isadmin;
 
-    public User(Integer id, Integer isadmin, String account, String name, String password, String idNumber, String gender, String tel, String address) {
+    public User(Integer id, String name, String account, String password, String idNumber, String gender, String tel, String address, Integer isadmin) {
         this.id = id;
-        this.isadmin = isadmin;
-        this.account = account;
         this.name = name;
+        this.account = account;
         this.password = password;
         this.idNumber = idNumber;
         this.gender = gender;
         this.tel = tel;
         this.address = address;
+        this.isadmin = isadmin;
     }
 
     public Integer getId() {
@@ -33,12 +33,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public Integer getIsadmin() {
-        return isadmin;
+    public String getName() {
+        return name;
     }
 
-    public void setIsadmin(Integer isadmin) {
-        this.isadmin = isadmin;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAccount() {
@@ -47,14 +47,6 @@ public class User implements Serializable {
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPassword() {
@@ -95,5 +87,13 @@ public class User implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Integer getIsadmin() {
+        return isadmin;
+    }
+
+    public void setIsadmin(Integer isadmin) {
+        this.isadmin = isadmin;
     }
 }

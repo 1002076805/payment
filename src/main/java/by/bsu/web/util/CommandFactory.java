@@ -10,7 +10,9 @@ public class CommandFactory {
             case "login":
                 return new LoginCommand();
             case "Logout":
-                return new LoginCommand();
+                return new LogoutCommand();
+            case "Main":
+                return new MainPage();
             case "cardList":
                 return new CradListCommand();
             case "addCards":
@@ -31,6 +33,12 @@ public class CommandFactory {
                 return new BalanceListCommand();
             case "userList":
                 return new UserListCommand();
+            case "updateUser":
+                return new UpdateUser();
+            case "updateUserMain":
+                return new UpdateUserMain();
+            case "deleteUser":
+                return new DeleteUser();
             case "logout":
                 return new LogoutCommand();
             default:

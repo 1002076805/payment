@@ -1,7 +1,7 @@
 package by.bsu.web.dao;
 
 import by.bsu.web.entity.Card;
-import by.bsu.web.entity.Payment;
+import by.bsu.web.util.ConnectionFactory;
 
 import java.sql.*;
 import java.util.List;
@@ -21,19 +21,40 @@ public class CardDao {
     }
 
 
-//    public  List<Card> findById() throws SQLException {
-//        ConnectionFactory factory =new ConnectionFactory();
-//        Connection connection =factory.create();
-//        PreparedStatement statement = connection.prepareStatement("select id,password,cardnumber,name,tel,email from account_info");
-//        ResultSet resultSet = statement.executeQuery();
-//        return  map(resultSet);
-//
-//    }
+    public  List<Card> findAllBy(String cardNumber) throws SQLException {
+        ConnectionFactory factory =new ConnectionFactory();
+        Connection connection =factory.create();
+        PreparedStatement statement = connection.prepareStatement("select * from account_info where cardnumber like '%"+cardNumber+"%'");
+        ResultSet resultSet = statement.executeQuery();
+        return  map(resultSet);
+
+    }
+
+    public  List<Card> findAllByNameIsadmin(String cardNumber,String cardName) throws SQLException {
+        ConnectionFactory factory =new ConnectionFactory();
+        Connection connection =factory.create();
+        PreparedStatement statement = connection.prepareStatement("select * from account_info where cardnumber like '%"+cardNumber+"%' and NAME = ?");
+        statement.setString(1,cardName);
+        ResultSet resultSet = statement.executeQuery();
+        return  map(resultSet);
+
+    }
 
     public  List<Card> findAll() throws SQLException {
         ConnectionFactory factory =new ConnectionFactory();
         Connection connection =factory.create();
-        PreparedStatement statement = connection.prepareStatement("select * from account_info");
+        PreparedStatement statement = connection.prepareStatement("select * from account_info ");
+        ResultSet resultSet = statement.executeQuery();
+        System.out.println("222");
+        return  map(resultSet);
+
+    }
+
+    public  List<Card> findAllByName(String cardName) throws SQLException {
+        ConnectionFactory factory =new ConnectionFactory();
+        Connection connection =factory.create();
+        PreparedStatement statement = connection.prepareStatement("select * from account_info where NAME = ?");
+        statement.setString(1,cardName);
         ResultSet resultSet = statement.executeQuery();
         return  map(resultSet);
 

@@ -20,7 +20,7 @@ public class DeleteRecord implements Command {
         CardDao dao = new CardDao();
         dao.deleteRecord(id);
         req.setAttribute("message", "delete Success");
-        req.getRequestDispatcher("controller?command=cardList").forward(req, resp);
+        req.getRequestDispatcher("controller?command=Main").forward(req, resp);
         return null;
     }
 }

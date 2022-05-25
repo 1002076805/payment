@@ -2,13 +2,13 @@ package by.bsu.web.dao;
 
 import by.bsu.web.entity.Balance;
 import by.bsu.web.entity.Card;
+import by.bsu.web.util.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BalanceDao {
@@ -17,6 +17,39 @@ public class BalanceDao {
         ConnectionFactory factory =new ConnectionFactory();
         Connection connection =factory.create();
         PreparedStatement statement = connection.prepareStatement("select * from balance_info");
+        ResultSet resultSet = statement.executeQuery();
+        return  map(resultSet);
+
+    }
+
+    public  List<Balance> findAllByUser(String balanceName) throws SQLException {
+        ConnectionFactory factory =new ConnectionFactory();
+        Connection connection =factory.create();
+        PreparedStatement statement = connection.prepareStatement("select * from balance_info where name = ?");
+        statement.setString(1,balanceName);
+        ResultSet resultSet = statement.executeQuery();
+        return  map(resultSet);
+
+    }
+
+    public  List<Balance> findByNumber(String cardNumber,String balance) throws SQLException {
+        ConnectionFactory factory =new ConnectionFactory();
+        Connection connection =factory.create();
+        System.out.println(cardNumber);
+        System.out.println(balance);
+        PreparedStatement statement = connection.prepareStatement("select * from balance_info where cardnumber like '%"+cardNumber+"%' and balance like '%"+balance+"%'  ");
+        ResultSet resultSet = statement.executeQuery();
+        return  map(resultSet);
+
+    }
+
+    public  List<Balance> findByNumberUser(String cardNumber,String balance,String balanceName) throws SQLException {
+        ConnectionFactory factory =new ConnectionFactory();
+        Connection connection =factory.create();
+        System.out.println(cardNumber);
+        System.out.println(balance);
+        PreparedStatement statement = connection.prepareStatement("select * from balance_info where cardnumber like '%"+cardNumber+"%' and balance like '%"+balance+"%' and name =?");
+        statement.setString(1,balanceName);
         ResultSet resultSet = statement.executeQuery();
         return  map(resultSet);
 

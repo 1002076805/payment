@@ -13,8 +13,32 @@ public class BalanceListCommand implements Command {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException {
         BalanceDao dao = new BalanceDao();
-        List<Balance> balances =dao.findAll();
-        req.setAttribute("balances",balances);
+        String cardNumber=req.getParameter("cardnumber");
+        String balance=req.getParameter("balance");
+        String isAdmin = req.getParameter("isadmin");
+        String balanceName = req.getParameter("balanceName");
+        if(isAdmin.equals("1")){
+            if(cardNumber==null||balance ==null){
+                List<Balance> balances =dao.findAll();
+                req.setAttribute("balances",balances);
+            }
+            else {
+                List<Balance> balances =dao.findByNumber(cardNumber,balance);
+                req.setAttribute("balances",balances);
+            }
+        }
+        else if(isAdmin.equals("0")){
+            if(cardNumber==null||balance ==null){
+                List<Balance> balances =dao.findAllByUser(balanceName);
+                req.setAttribute("balances",balances);
+            }
+            else {
+                List<Balance> balances =dao.findByNumberUser(cardNumber,balance,balanceName);
+                req.setAttribute("balances",balances);
+            }
+        }
+
+
         return "WEB-INF/jsp/balance-list.jsp";
     }
 }

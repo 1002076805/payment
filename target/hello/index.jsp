@@ -1,45 +1,52 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>login UI</title>
-    <link rel="stylesheet" href="static/style/login.css">
-    <style type="text/css">
-    </style>
-    <link href="static/style/login.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./static/bootstrap/bootstrap.4.6.min.css">
+    <link href="./static/style/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
-    <h2>Welcome</h2>
-    <form action="controller?command=login" method="post">
-        <div class="inputBox">
-            <input type="text" name="login" required="">
-            <label>ACCOUNT</label>
-        </div>
-        <div class="inputBox">
-            <input type="password" name="password" required="">
-            <label>PASSWORD</label>
-        </div>
-        <div style="text-align: center">
-            <input style="text-align: center" class="submit1" type="submit" name="login" value="login">
+
+    <div style="position: absolute;left: 90%;top: 50px;">
+        <a href="controller?command=register" style="position: absolute;">
+            <button  class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="login">register</button>
+        </a>
+    </div>
+
+    <form class="form-signin" action="controller?command=login" method="post">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="./static/img/pay.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Just Pay</h1>
         </div>
 
+        <div class="form-label-group">
+            <input type="text"  name="login" class="form-control"  required autofocus>
+            <label >ACCOUNT</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" name="password"  class="form-control"  required>
+            <label >Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="login">Sign in</button>
+        <div class="login-error" style="color: red">
+            <c:if test="${error_message != null}">
+                ${error_message}
+            </c:if>
+        </div>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; 2022-2023</p>
+
+        <c:if test="${RegisterMessage != null}">
+            ${RegisterMessage}
+        </c:if>
     </form>
-    <form action="controller?command=register" method="post" style="text-align: center;margin-top: auto;padding-top: 20px">
-        <div >
-            <input  style="text-align: center" class="submit2" type="submit" name="register" value="register">
-        </div>
-
-    </form>
-</div>
-<script type="text/javascript">
-    <c:if test="${error_message !=null}">
-    alert("${error_message}")
-    </c:if>
-</script>
-
 
 </body>
 </html>

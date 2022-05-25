@@ -1,67 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>REGISTER</title>
-  <link rel="stylesheet" href="static/style/register.css">
+  <link rel="stylesheet" href="static/bootstrap/bootstrap.4.6.min.css">
+  <link href="static/style/reg.css" rel="stylesheet">
 </head>
-<body>
-<div class="rg_layout">
-  <div class="rg_left">
-    <p>USER REGISTER</p>
+
+<body class="bg-light">
+
+  <div style="position: absolute;left: 70%;top: 5px">
+    <h4>Have account?<a href="controller?command=login">Login</a></h4>
   </div>
-  <div class="rg_center">
-    <div class="rg_form">
-      <form action="controller?command=registerMain" method="post">
-        <table>
-          <tr><!--label 标签的作用是当点击文字也会跳到文本输出框-->
-            <!--for属性与ID属性对应规定 label 绑定到哪个表单元素。-->
-            <td class="td_left"><label for="username">username</label> </td>
-            <td class="td_right"><input type="text" name="username" id="username"> </td>
-          </tr>
-          <tr>
-            <td class="td_left"><label for="account">account</label> </td>
-            <td class="td_right"><input type="text" name="account" id="account"> </td>
-          </tr>
-          <tr>
-            <td class="td_left"><label for="password">password</label> </td>
-            <td class="td_right"><input type="password" name="password" id="password"> </td>
-          </tr>
-          <tr>
-            <td class="td_left"><label for="idNumber">idNumber</label> </td>
-            <td class="td_right"><input type="text" name="idNumber" id="idNumber"> </td>
-          </tr>
-          <tr>
-            <td class="td_left">gender</td>
-            <td class="td_right">
-              <input type="radio" name="gender" value="male">male
-              <input type="radio" name="gender" value="female">female
-            </td>
-          </tr>
-          <tr>
-            <td class="td_left"><label for="tel">tel</label> </td>
-            <td class="td_right"><input type="text" name="tel" id="tel"> </td>
-          </tr>
-          <tr>
-            <td class="td_left"><label for="address">text</label> </td>
-            <td class="td_right"><input type="text" name="address" id="address"> </td>
-          </tr>
 
-            <tr>
-              <td colspan="2"  style="text-align: center">
-                <input type="submit" value="register" id="btn_sub">
-              </td>
-            </tr>
-
-
-
-        </table>
-      </form>
+  <div class="container">
+    <div class="py-5 text-center" style="left: 30%">
+      <img class="d-block mx-auto mb-4" src="static/img/pay.svg" alt="" width="72" height="72">
+      <h2>Welcome to register</h2>
+      <p class="lead">Welcome to the registration page. We will keep all your information properly. Please remember all your information when registering. Thank you for your cooperation.</p>
     </div>
+
+    <div class="row"  >
+      <div class="col-md-8 order-md-1">
+        <form action="controller?command=registerMain" method="post" class="needs-validation" novalidate>
+
+          <div class="mb-3">
+            <label for="account">Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="account">Account</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="account" id="account" placeholder="Account" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Account is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="password" id="password" placeholder="Password" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Password is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="idNumber">Id Number</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="idNumber" id="idNumber" placeholder="Id Number" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Id Number is required.
+              </div>
+            </div>
+          </div>
+
+          <h4 class="mb-3">Gender</h4>
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="credit" name="gender" value="male" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="credit">male</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="debit" name="gender" value="female" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="debit">female</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="tel">Telephone Number</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="tel" id="tel" placeholder="Telephone Number" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Telephone Number is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address">Address</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="address" id="address" placeholder="Address" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Address is required.
+              </div>
+            </div>
+          </div>
+
+          <button value="register"  class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+
+        </form>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017-2022 Just Pay</p>
+    </footer>
+
   </div>
-  <div class="rg_right">
-    <p>Have account?<a href="controller?command=login">Login</a></p>
-  </div>
-</div>
 </body>
 </html>

@@ -13,7 +13,6 @@ public  class LoginCommand implements Command {
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException {
         String account = req.getParameter("login");
         String password = req.getParameter("password");
-
         UserDao dao = new UserDao();
         User user = dao.login(account,password);
 
@@ -21,7 +20,7 @@ public  class LoginCommand implements Command {
             req.getSession().setAttribute("user",user);
             return "WEB-INF/jsp/main.jsp";
         }else{
-            req.setAttribute("error_message","incorrect password");
+            req.setAttribute("error_message","Incorrect Password");
             return "index.jsp";
         }
 

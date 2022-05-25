@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class UpdateCardsMain implements Command {
@@ -20,7 +21,6 @@ public class UpdateCardsMain implements Command {
         CardDao dao =new CardDao();
         String id2 = req.getParameter("id");
         int id = Integer.parseInt(id2);
-        System.out.println(id);
         String cardnumber = req.getParameter("cardnumber");
         String password = req.getParameter("password");
         String name = req.getParameter("name");
@@ -28,8 +28,9 @@ public class UpdateCardsMain implements Command {
         String email = req.getParameter("email");
         Card card =new Card(id,cardnumber,password,name,tel,email);
         dao.updateCard(card);
-        req.setAttribute("message", "Update Success");
-        req.getRequestDispatcher("controller?command=cardList").forward(req, resp);
+        List<Card> cards =dao.findAll();
+        req.setAttribute("cards",cards);
+        req.getRequestDispatcher("controller?command=Main").forward(req, resp);
         return null;
     }
 }

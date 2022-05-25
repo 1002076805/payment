@@ -1,4 +1,4 @@
-package by.bsu.web.dao;
+package by.bsu.web.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -19,12 +19,10 @@ public class AddCardMainCommand implements Command {
         String name=req.getParameter("name");
         String tel=req.getParameter("tel");
         String email=req.getParameter("email");
-        Card book =new Card(null,cardnumber,password,name,tel,email);
-        dao.save(book);
-//        return "WEB-INF/jsp/main.jsp";
-
+        Card card =new Card(null,cardnumber,password,name,tel,email);
+        dao.save(card);
         req.setAttribute("message", "Update Success");
-        //req.getRequestDispatcher("controller?command=login").forward(req, resp);
-        return "WEB-INF/jsp/main.jsp";
+        req.getRequestDispatcher("controller?command=Main").forward(req, resp);
+        return null;
     }
 }

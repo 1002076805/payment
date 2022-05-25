@@ -13,8 +13,36 @@ public class CradListCommand implements Command {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException {
         CardDao dao = new CardDao();
-        List<Card> cards =dao.findAll();
-        req.setAttribute("cards",cards);
-        return "WEB-INF/jsp/payment-list.jsp";
+        String cardNumber=req.getParameter("cardnumber");
+        String  cardName = req.getParameter("cardName");
+        String  isadmin = req.getParameter("isadmin");
+        System.out.println("cardName:"+cardName);
+        System.out.println("isadmin:"+isadmin);
+        System.out.println("cardNumber:"+cardNumber);
+        if(isadmin.equals("1")){
+            if(cardNumber==null){
+                System.out.println("11");
+                List<Card> cards =dao.findAll();
+                req.setAttribute("cards",cards);
+            }
+            else {
+                List<Card> cards =dao.findAllBy(cardNumber);
+                req.setAttribute("cards",cards);
+            }
+        }
+        else if(isadmin.equals("0")){
+            if(cardNumber==null){
+                System.out.println("33");
+                List<Card> cards =dao.findAllByName(cardName);
+                req.setAttribute("cards",cards);
+            }
+            else {
+                List<Card> cards =dao.findAllByNameIsadmin(cardNumber,cardName);
+                req.setAttribute("cards",cards);
+            }
+        }
+
+
+        return "WEB-INF/jsp/card-list.jsp";
     }
 }

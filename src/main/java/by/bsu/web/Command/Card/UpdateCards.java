@@ -7,6 +7,7 @@ import by.bsu.web.entity.Card;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class UpdateCards implements Command {
